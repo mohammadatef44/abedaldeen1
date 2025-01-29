@@ -1,0 +1,2 @@
+FROM mohammadatef22/mohapacheweb
+	ADD . /var/www/html 
