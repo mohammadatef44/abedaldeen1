@@ -1,0 +1,10 @@
+{
+  "highlight": "Multimodal verification blends NLP + media signals to reduce false positives.",
+  "features": [
+    "TF-IDF + Logistic Regression for text credibility",
+    "Image metadata + brightness fingerprinting",
+    "Video URL heuristics for live/clip detection",
+    "Source domain trust scoring"
+  ],
+  "dataset": "Curated mini dataset with real/fake examples for quick bootstrapping"
+}
