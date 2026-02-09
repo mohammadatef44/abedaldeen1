@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News Sentinel AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
+
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__tag">Multimodal Intelligence Engine</p>
+      <h1>News Sentinel AI</h1>
+      <p class="hero__subtitle">
+        Analyze news text, images, video links, and sources in one place. The system fuses
+        machine-learning credibility signals with media intelligence to surface risky stories.
+      </p>
+      <div class="hero__actions">
+        <button class="primary" type="button" onclick="scrollToForm()">Start Verification</button>
+        <button class="ghost" type="button" onclick="scrollToInsights()">See Insights</button>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="metric">
+        <h3>Trust Pulse</h3>
+        <p>Real-time probability blend from text + media + source.</p>
+      </div>
+      <div class="metric">
+        <h3>Signal Grid</h3>
+        <p>Detect anomalies in visuals, video context, and source domain.</p>
+      </div>
+      <div class="metric">
+        <h3>Decision Lens</h3>
+        <p>Human-readable summaries for editors and investigators.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="verify">
+      <div class="panel__header">
+        <h2>Verify a Story</h2>
+        <p>Paste the story details and optional media links. The model will rank credibility risk.</p>
+      </div>
+      <form method="post" class="form-grid">
+        <div class="field">
+          <label for="title">Headline</label>
+          <input id="title" name="title" type="text" placeholder="Enter the headline">
+        </div>
+        <div class="field">
+          <label for="body">Article Summary</label>
+          <textarea id="body" name="body" rows="4" placeholder="Paste the article or summary"></textarea>
+        </div>
+        <div class="field">
+          <label for="image_url">Image URL</label>
+          <input id="image_url" name="image_url" type="url" placeholder="https://image.com/photo.jpg">
+        </div>
+        <div class="field">
+          <label for="video_url">Video URL</label>
+          <input id="video_url" name="video_url" type="url" placeholder="https://video.com/clip.mp4">
+        </div>
+        <div class="field">
+          <label for="link_url">Source Link</label>
+          <input id="link_url" name="link_url" type="url" placeholder="https://newsroom.com/story">
+        </div>
+        <div class="field submit">
+          <button class="primary" type="submit">Run Analysis</button>
+          <p class="hint">Model output is for decision support, not absolute truth.</p>
+        </div>
+      </form>
+    </section>
+
+    {% if result %}
+    <section class="panel result">
+      <div class="result__summary">
+        <h2>{{ result.label }}</h2>
+        <p>Composite Risk Score</p>
+        <div class="score">{{ result.final_score }}</div>
+      </div>
+      <div class="result__details">
+        <div class="card">
+          <h3>Text Intelligence</h3>
+          <p>Text Prediction: <strong>{{ result.text_label }}</strong></p>
+          <p>Fake Probability: {{ result.text_fake }}</p>
+          <p>Real Probability: {{ result.text_real }}</p>
+        </div>
+        <div class="card">
+          <h3>Image Signal</h3>
+          <p>{{ result.image.note or 'Metadata captured.' }}</p>
+          {% if result.image.resolution %}
+          <p>Resolution: {{ result.image.resolution }}</p>
+          <p>Dominant Color: {{ result.image.dominant_color }}</p>
+          <p>Brightness: {{ result.image.brightness }}</p>
+          {% endif %}
+        </div>
+        <div class="card">
+          <h3>Video Signal</h3>
+          <p>{{ result.video.signals or result.video.note }}</p>
+        </div>
+        <div class="card">
+          <h3>Source Trust</h3>
+          <p>Domain: {{ result.link.source }}</p>
+          <p>Status: {{ result.link.trust }}</p>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <section class="panel insights" id="insights">
+      <div class="panel__header">
+        <h2>Model Insights</h2>
+        <p>{{ insights.highlight }}</p>
+      </div>
+      <div class="insights__grid">
+        {% for feature in insights.features %}
+        <div class="card">
+          <h3>{{ feature }}</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="dataset">
+        <h3>Dataset Snapshot</h3>
+        <p>{{ insights.dataset }}</p>
+        {% if metrics %}
+        <div class="metrics">
+          <div>
+            <span>Accuracy</span>
+            <strong>{{ metrics.accuracy }}</strong>
+          </div>
+          <div>
+            <span>Fake F1</span>
+            <strong>{{ metrics.fake_f1 }}</strong>
+          </div>
+          <div>
+            <span>Real F1</span>
+            <strong>{{ metrics.real_f1 }}</strong>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>News Sentinel AI • Built with Python + Machine Learning</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

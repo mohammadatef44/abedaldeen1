@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News Sentinel AI Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
+
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__tag">Multimodal Intelligence Engine</p>
+      <h1>News Sentinel AI</h1>
+      <p class="hero__subtitle">
+        Analyze news text, images, video links, and sources in one place. The system fuses
+        machine-learning credibility signals with media intelligence to surface risky stories.
+      </p>
+      <div class="hero__actions">
+        <button class="primary" type="button">Start Verification</button>
+        <button class="ghost" type="button">See Insights</button>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="metric">
+        <h3>Trust Pulse</h3>
+        <p>Real-time probability blend from text + media + source.</p>
+      </div>
+      <div class="metric">
+        <h3>Signal Grid</h3>
+        <p>Detect anomalies in visuals, video context, and source domain.</p>
+      </div>
+      <div class="metric">
+        <h3>Decision Lens</h3>
+        <p>Human-readable summaries for editors and investigators.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="verify">
+      <div class="panel__header">
+        <h2>Verify a Story</h2>
+        <p>Paste the story details and optional media links. The model will rank credibility risk.</p>
+      </div>
+      <form class="form-grid">
+        <div class="field">
+          <label for="title">Headline</label>
+          <input id="title" name="title" type="text" placeholder="Enter the headline">
+        </div>
+        <div class="field">
+          <label for="body">Article Summary</label>
+          <textarea id="body" name="body" rows="4" placeholder="Paste the article or summary"></textarea>
+        </div>
+        <div class="field">
+          <label for="image_url">Image URL</label>
+          <input id="image_url" name="image_url" type="url" placeholder="https://image.com/photo.jpg">
+        </div>
+        <div class="field">
+          <label for="video_url">Video URL</label>
+          <input id="video_url" name="video_url" type="url" placeholder="https://video.com/clip.mp4">
+        </div>
+        <div class="field">
+          <label for="link_url">Source Link</label>
+          <input id="link_url" name="link_url" type="url" placeholder="https://newsroom.com/story">
+        </div>
+        <div class="field submit">
+          <button class="primary" type="button">Run Analysis</button>
+          <p class="hint">Model output is for decision support, not absolute truth.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel result">
+      <div class="result__summary">
+        <h2>Likely Real</h2>
+        <p>Composite Risk Score</p>
+        <div class="score">0.38</div>
+      </div>
+      <div class="result__details">
+        <div class="card">
+          <h3>Text Intelligence</h3>
+          <p>Text Prediction: <strong>real</strong></p>
+          <p>Fake Probability: 0.31</p>
+          <p>Real Probability: 0.69</p>
+        </div>
+        <div class="card">
+          <h3>Image Signal</h3>
+          <p>Metadata captured.</p>
+          <p>Resolution: 1920x1080</p>
+          <p>Dominant Color: rgb(112, 120, 180)</p>
+          <p>Brightness: 0.54</p>
+        </div>
+        <div class="card">
+          <h3>Video Signal</h3>
+          <p>Direct video file detected.</p>
+        </div>
+        <div class="card">
+          <h3>Source Trust</h3>
+          <p>Domain: newsroom.gov</p>
+          <p>Status: Trusted domain</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel insights" id="insights">
+      <div class="panel__header">
+        <h2>Model Insights</h2>
+        <p>Multimodal verification blends NLP + media signals to reduce false positives.</p>
+      </div>
+      <div class="insights__grid">
+        <div class="card">
+          <h3>TF-IDF + Logistic Regression for text credibility</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Image metadata + brightness fingerprinting</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Video URL heuristics for live/clip detection</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Source domain trust scoring</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Cross-validation metrics from train/test splits</h3>
+          <p>Designed for fast newsroom triage and investigative workflows.</p>
+        </div>
+      </div>
+      <div class="dataset">
+        <h3>Dataset Snapshot</h3>
+        <p>Curated dataset with 30 real/fake examples for quick bootstrapping</p>
+        <div class="metrics">
+          <div>
+            <span>Accuracy</span>
+            <strong>0.88</strong>
+          </div>
+          <div>
+            <span>Fake F1</span>
+            <strong>0.86</strong>
+          </div>
+          <div>
+            <span>Real F1</span>
+            <strong>0.89</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>News Sentinel AI • Built with Python + Machine Learning</p>
+  </footer>
+</body>
+</html>

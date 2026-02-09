@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News Sentinel AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0c0f1a;
+      color: #f4f6ff;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #151a2b;
+      padding: 32px;
+      border-radius: 16px;
+      text-align: center;
+      width: min(480px, 90vw);
+    }
+    a {
+      color: #7f5dff;
+    }
+  </style>
 </head>
 <body>
-    <h1> My first project</h1>
+  <div class="card">
+    <h1>News Sentinel AI</h1>
+    <p>This project runs a Python Flask app for multimodal news verification.</p>
+    <p>Start the server with <code>python app.py</code> and open <a href="http://localhost:5000">localhost:5000</a>.</p>
+  </div>
 </body>
 </html>
