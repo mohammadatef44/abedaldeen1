@@ -9,7 +9,7 @@ import requests
 from flask import Flask, render_template, request
 from PIL import Image
 
-from ml.model import blend_scores, load_model, predict_text
+from ml.model import METRICS_PATH, blend_scores, load_model, predict_text
 
 BASE_DIR = Path(__file__).resolve().parent
 INSIGHTS_PATH = BASE_DIR / "data" / "insights.json"
@@ -82,6 +82,19 @@ def keyword_risk(text: str) -> float:
     return min(0.8, 0.45 + 0.1 * len(hits))
 
 
+def load_metrics() -> Dict[str, str]:
+    if not METRICS_PATH.exists():
+        return {}
+    data = json.loads(METRICS_PATH.read_text())
+    accuracy = data.get("accuracy")
+    report = data.get("report", {})
+    return {
+        "accuracy": f"{accuracy:.2f}" if isinstance(accuracy, (int, float)) else "n/a",
+        "fake_f1": f"{report.get('fake', {}).get('f1-score', 0):.2f}",
+        "real_f1": f"{report.get('real', {}).get('f1-score', 0):.2f}",
+    }
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     result = None
@@ -118,7 +131,9 @@ def index():
     if INSIGHTS_PATH.exists():
         insights = json.loads(INSIGHTS_PATH.read_text())
 
-    return render_template("index.html", result=result, insights=insights)
+    metrics = load_metrics()
+
+    return render_template("index.html", result=result, insights=insights, metrics=metrics)
 
 
 if __name__ == "__main__":

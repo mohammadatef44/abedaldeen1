@@ -129,6 +129,22 @@
       <div class="dataset">
         <h3>Dataset Snapshot</h3>
         <p>{{ insights.dataset }}</p>
+        {% if metrics %}
+        <div class="metrics">
+          <div>
+            <span>Accuracy</span>
+            <strong>{{ metrics.accuracy }}</strong>
+          </div>
+          <div>
+            <span>Fake F1</span>
+            <strong>{{ metrics.fake_f1 }}</strong>
+          </div>
+          <div>
+            <span>Real F1</span>
+            <strong>{{ metrics.real_f1 }}</strong>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </section>
   </main>

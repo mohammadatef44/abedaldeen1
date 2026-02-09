@@ -222,6 +222,33 @@ textarea {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.metrics div {
+  background: rgba(15, 20, 35, 0.7);
+  padding: 12px;
+  border-radius: 14px;
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.metrics span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metrics strong {
+  font-size: 1.2rem;
+}
+
 footer {
   text-align: center;
   padding: 30px 10px 40px;

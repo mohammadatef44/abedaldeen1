@@ -4,7 +4,8 @@
     "TF-IDF + Logistic Regression for text credibility",
     "Image metadata + brightness fingerprinting",
     "Video URL heuristics for live/clip detection",
-    "Source domain trust scoring"
+    "Source domain trust scoring",
+    "Cross-validation metrics from train/test splits"
   ],
-  "dataset": "Curated mini dataset with real/fake examples for quick bootstrapping"
+  "dataset": "Curated dataset with 30 real/fake examples for quick bootstrapping"
 }
